@@ -3,7 +3,7 @@
 
 #include<glm/vec3.hpp>
 
-class Shape
+class Shape //abstrakte Basisklasse
 {
 
 public:
@@ -18,14 +18,5 @@ private:
 
 };
 
-class Sphere :: public Shape 
-{
-
-};
-
-class Box :: public Shape
-{
-
-};
 
 #endif // define BUW_WINDOW_HPP
