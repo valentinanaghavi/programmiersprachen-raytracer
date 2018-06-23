@@ -39,6 +39,12 @@ float Sphere :: volume() const
         return (4.0f / 3.0f) * M_PI * radius_ * radius_ * radius_ ; //std::abs
     } 
 
-
+std::ostream& Sphere :: print(std::ostream& os ) const
+    {
+        Shape::print(os);
+        os << "area: " << area() << " \n volume: " << volume() << " \n center: (" << center_.x << ", " << center_.y << ", " << center_.z << ") \n radius: "  << radius_ << " \n";
+        
+        return os;
+    }
 
     

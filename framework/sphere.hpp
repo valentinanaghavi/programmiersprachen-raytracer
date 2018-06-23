@@ -21,6 +21,7 @@ public:
     float area() const override; //abstrakte M. = rein virtuelle Methode
     float volume() const override;
     
+    std::ostream& print(std::ostream& os ) const override;
 
 private:
     glm::vec3 center_ ;

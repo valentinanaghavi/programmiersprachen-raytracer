@@ -40,3 +40,11 @@ float Box :: volume() const
         return diffVec.x * diffVec.y * diffVec.z ;
     }
 
+std::ostream& Box :: print(std::ostream& os ) const
+    {
+        Shape::print(os);
+        os << "area: " << area() << " \n volume: " << volume() << " \n minimum: (" << min_.x << ", " << min_.y << ", " << min_.z << ") \n maximum: (" << max_.x << ", " << max_.y << ", " << max_.z << ")" << " \n";
+        
+        return os;
+    }
+
