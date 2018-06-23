@@ -1,22 +1,24 @@
-#ifndef BUW_BOX_HPP
-#define BUW_BOX_HPP
+#ifndef BOX_HPP
+#define BOX_HPP
 
-#include<glm/vec3.hpp>
 
+#include <iostream>
 #include "shape.hpp"
 
-class Box :: public Shape
+#include <glm/vec3.hpp>
+
+class Box : public Shape
 {
 public:
-    Box(glm::vec3 min &const , glm::vec3 max &const);
+    Box (glm::vec3 const& min , glm::vec3 const& max);
     Box();
     ~Box();
 
-    getMax(glm::vec3 min &const);
-    getMin(glm::vec3 max &const);
+    glm::vec3 const& getMax() const;
+    glm::vec3 const& getMin() const;
 
-    void area() const override; //abstrakte M. = rein virtuelle Methode
-    void volume() const override;
+    float area() const override; //abstrakte M. = rein virtuelle Methode
+    float volume() const override;
 
 private:
     glm::vec3 min_ ;
@@ -25,4 +27,5 @@ private:
 
 
 
-#endif // define BUW_BOX_HPP
+#endif // define BOX_HPP 
+
