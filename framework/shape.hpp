@@ -16,6 +16,7 @@ public:
     std::string getName() const;
     Color getColor() const;
 
+    virtual std::ostream& print(std::ostream& os ) const ;
 private:
     std::string name_ ;
     Color color_ ;
@@ -23,5 +24,6 @@ private:
 
 };
 
+    std::ostream& operator<<(std::ostream& os , Shape const& s) ;
 
 #endif // define BUW_WINDOW_HPP
