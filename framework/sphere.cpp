@@ -2,13 +2,16 @@
 
 #include <iostream>
 #include <math.h>
+#include <string>
 
-Sphere :: Sphere(glm::vec3 const& center , float const& radius ): //radius ohne &const
+Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Color const& color ): //radius ohne &const
+    Shape(name , color),
     center_{center},
     radius_{radius}
     {};
 
 Sphere :: Sphere():
+    Shape(),
     center_{0.0 , 0.0 , 0.0}, 
     radius_{0.0f}
     {};
