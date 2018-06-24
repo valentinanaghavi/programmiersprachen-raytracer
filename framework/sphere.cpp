@@ -54,7 +54,7 @@ float Sphere :: volume() const
 
 std::ostream& Sphere :: print(std::ostream& os ) const
     {
-        Shape::print(os);
+        Shape::print(os);   //prints name and color
         os << "area: " << area() << " \n volume: " << volume() << " \n center: (" << center_.x << ", " << center_.y << ", " << center_.z << ") \n radius: "  << radius_ << " \n";
         
         return os;

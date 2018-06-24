@@ -14,6 +14,99 @@
 #include "../framework/color.hpp"
 #include "../framework/Ray.hpp"
 
+//aufgabe 5.2 + 5.3
+TEST_CASE("general_methods_Box_Sphere" , "[ShapeMethods]")
+  {
+      glm::vec3 center {5.0 , 5.0 , 5.0} ;
+      glm::vec3 min {2.0 ,0.0 , 0.0} ;
+      glm::vec3 max {50.0 , 10.0 , 3.0};
+      float radius {5.0f};
+      Color color {0.0f , 1.0f , 0.0f};
+
+      Sphere sphere1{center,radius,"Kugel",color};
+      Sphere sphere2{};
+      Box box1{min,max,"Box" , color};
+      Box box2{};
+
+    SECTION("constructor")
+    {
+      REQUIRE(sphere1.getCenter().x==center.x); 
+      REQUIRE(sphere1.getCenter().y==center.y);
+      REQUIRE(sphere1.getCenter().z==center.z);
+      REQUIRE(sphere1.getRadius()==5.0f);
+      REQUIRE(sphere1.getColor().r==0.0f);
+      REQUIRE(sphere1.getColor().g==1.0f);
+      REQUIRE(sphere1.getColor().b==0.0f);
+      REQUIRE(sphere1.getName().compare("Kugel")==0.0);
+
+      REQUIRE(sphere2.getCenter().x== 0.0); 
+      REQUIRE(sphere2.getCenter().y== 0.0);
+      REQUIRE(sphere2.getCenter().z== 0.0);
+      REQUIRE(sphere2.getRadius()==0.0f);
+      REQUIRE(sphere2.getColor().r==0.0f);
+      REQUIRE(sphere2.getColor().g==0.0f);
+      REQUIRE(sphere2.getColor().b==0.0f);
+      REQUIRE(sphere2.getName().compare("NoName")==0.0);
+
+      REQUIRE(box1.getMin().x==min.x);
+      REQUIRE(box1.getMin().y==min.y);
+      REQUIRE(box1.getMin().z==min.z);
+      REQUIRE(box1.getMax().x==max.x);
+      REQUIRE(box1.getMax().y==max.y);
+      REQUIRE(box1.getMax().z==max.z);
+      REQUIRE(box1.getName().compare("Box")==0.0);
+      REQUIRE(box1.getColor().r==0.0f);
+      REQUIRE(box1.getColor().g==1.0f);
+      REQUIRE(box1.getColor().b==0.0f);
+
+      REQUIRE(box2.getMin().x==0.0);
+      REQUIRE(box2.getMin().y==0.0);
+      REQUIRE(box2.getMin().z==0.0);
+      REQUIRE(box2.getMax().x==0.0);
+      REQUIRE(box2.getMax().y==0.0);
+      REQUIRE(box2.getMax().z==0.0);
+      REQUIRE(box2.getName().compare("NoName")==0.0);
+      REQUIRE(box2.getColor().r==0.0f);
+      REQUIRE(box2.getColor().g==0.0f);
+      REQUIRE(box2.getColor().b==0.0f);
+
+    }
+
+    SECTION("volume")
+    {
+      REQUIRE(sphere1.volume() == Approx(523.5987756f));
+      REQUIRE(sphere2.volume() == Approx(0.0f));
+      REQUIRE(box1.volume() == Approx(1440.0f));
+      REQUIRE(box2.volume() == Approx(0.0f));
+    }
+
+    SECTION("area")
+    {
+      REQUIRE(sphere1.area() == Approx(314.1592654f));
+      REQUIRE(sphere2.area() == Approx(0.0f));
+      REQUIRE(box1.area() == Approx(1308.0f));
+      REQUIRE(box2.area() == Approx(0.0f));
+    }
+  }
+//aufgabe5.5
+TEST_CASE( "print_and_operator<<" , "[Shape]")
+  {
+      glm::vec3 center {5.0 , 5.0 , 5.0} ;
+      glm::vec3 min {2.0 ,0.0 , 0.0} ;
+      glm::vec3 max {50.0 , 10.0 , 3.0};
+      float radius {5.0f};
+      Color color {0.0f , 1.0f , 0.0f};
+
+      Sphere sphere1{center,radius,"Kugel",color};
+      Sphere sphere2{};
+      Box box1{min,max,"Box" , color};
+
+
+      std::cout<<sphere1<<"\n";
+      std::cout<<box1<<"\n";
+      std::cout<<sphere2<<"\n";
+
+  }
 
 //aufgabe 5.6
 TEST_CASE( "intersect_ray_sphere" , "[intersect]")
