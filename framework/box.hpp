@@ -30,4 +30,3 @@ private:
 
 
 #endif // define BOX_HPP 
-

@@ -1,14 +1,17 @@
-#ifndef BUW_SHAPE_HPP
-#define BUW_SHAPE_HPP
+#ifndef SHAPE_HPP
+#define SHAPE_HPP
 
 #include "color.hpp" 
+#include <iostream>
+#include <string>
+
 class Shape //abstrakte Basisklasse
 {
 
 public:
-    Shape(std::string const& name , Color const& color);
     Shape();
-    ~Shape();
+    Shape(std::string const& name , Color const& color);
+    virtual ~Shape();
 
     virtual float area() const = 0; //pure virtual -> muss in der abgl. Klasse ueberschrieben werden, um Objekt instanziieren zu koennen , Klasse kann nicht instanziiert werden
     virtual float volume() const = 0; // Methodeninterface wird vererbt, keine Implementierung 
@@ -26,4 +29,5 @@ private:
 
     std::ostream& operator<<(std::ostream& os , Shape const& s) ;
 
-#endif // define BUW_WINDOW_HPP
+#endif // define SHAPE_HPP 
+

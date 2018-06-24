@@ -4,7 +4,10 @@
 #include "shape.hpp"
 #include "Ray.hpp"
 
+#include<glm/glm.hpp>
+#include<glm/gtx/intersect.hpp>
 #include <glm/vec3.hpp>
+
 #include <iostream>
 #include <string>
 
@@ -13,8 +16,8 @@ class Sphere : public Shape
 {
 
 public:
-    Sphere(glm::vec3 const& center, float const& radius , std::string const& name, Color const& color);
     Sphere();
+    Sphere(glm::vec3 const& center, float const& radius , std::string const& name, Color const& color);
     ~Sphere();
 
      glm::vec3 const& getCenter() const;
@@ -36,4 +39,4 @@ private:
 
 
 
-#endif // define SPHERE_HPP  
+#endif // define SPHERE_HPP 

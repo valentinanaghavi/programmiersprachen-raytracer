@@ -1,18 +1,26 @@
 #include "shape.hpp"
 #include <string>
+#include <iostream>
+
+
+Shape :: Shape():
+    name_{"NoName"},
+    color_{0.0f , 0.0f , 0.0f}
+    {
+        std::cout << "default C'tor class Shape" << std::endl ;
+    };
 
 Shape :: Shape(std::string const& name , Color const& color):
     name_{name},
     color_{color}
-    {}
-
-Shape :: Shape():
-    name_{"no name"},
-    color_{0.0f , 0.0f , 0.0f}
-    {}
+    {
+        std::cout << "C'tor class Shape" << std::endl ;
+    };
 
 Shape :: ~Shape()
-    {}
+    {
+        std::cout << "D'tor class Shape" << std::endl ;
+    };
 
 std::string Shape :: getName() const
     {

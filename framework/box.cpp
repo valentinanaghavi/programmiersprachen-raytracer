@@ -2,21 +2,22 @@
 
 #include <iostream>
 #include <string>
+#include <glm/vec3.hpp>
 
 Box :: Box(glm::vec3 const& min  , glm::vec3 const& max , std::string const& name, Color const& color):
     Shape(name , color),
     min_{min},
     max_{max}
-    {}
+    {};
 
 Box :: Box () :
     Shape(),
     min_{0.0 , 0.0 , 0.0},
     max_{0.0 , 0.0 , 0.0}
-    {}
+    {};
 
 Box :: ~Box()
-    {}
+    {};
 
 glm::vec3 const& Box :: getMax() const //warum const& ??
     {
@@ -47,4 +48,6 @@ std::ostream& Box :: print(std::ostream& os ) const
         
         return os;
     }
+
+
 

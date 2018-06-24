@@ -1,23 +1,36 @@
 #include "sphere.hpp"
 
+#include<glm/glm.hpp>
+#include<glm/gtx/intersect.hpp>
+#include <glm/vec3.hpp>
+
 #include <iostream>
 #include <math.h>
 #include <string>
-
-Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Color const& color ): //radius ohne &const
-    Shape(name , color),
-    center_{center},
-    radius_{radius}
-    {};
+#include "Ray.hpp"
 
 Sphere :: Sphere():
-    Shape(),
+    Shape{},
     center_{0.0 , 0.0 , 0.0}, 
     radius_{0.0f}
-    {};
+    {
+        std::cout << "default C'tor class Sphere - Child" << std::endl ;
+    };
+
+Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Color const& color ): //radius ohne &const
+    Shape{name , color},
+    center_{center},
+    radius_{radius}
+    {
+        std::cout << "C'tor class Sphere - Child" << std::endl ;
+    };
+
 
 Sphere :: ~Sphere()
-    {};
+    {
+        std::cout << "D'tor class Sphere - Child" << std::endl ;
+    };
+
 
 glm::vec3 const& Sphere :: getCenter() const
     {
@@ -49,9 +62,11 @@ std::ostream& Sphere :: print(std::ostream& os ) const
 
 bool Sphere :: intersect (Ray const& ray, float& distance) const
     {
+        //ray.direction = glm::normalize(ray.direction); //vielleicht auskommentieren , Richtung muss normalisiert sein!
         return glm::intersectRaySphere(ray.origin,ray.direction, center_, radius_*radius_, distance); 
         //Berrechnung/Ueberpruefung des Schnitts von Strahl und Kugel
         // ray starting - normalisierte Richtung des Strahl - Kugel Mittelpunkt - quadrierter radius - Schnitt Abstand
     }
+
 
     
