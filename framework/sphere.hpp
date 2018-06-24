@@ -2,10 +2,12 @@
 #define SPHERE_HPP
 
 #include "shape.hpp"
+#include "Ray.hpp"
 
 #include <glm/vec3.hpp>
 #include <iostream>
 #include <string>
+
 
 class Sphere : public Shape
 {
@@ -22,6 +24,8 @@ public:
     float volume() const override;
     
     std::ostream& print(std::ostream& os ) const override;
+
+    bool intersect (Ray const& ray, float& distance) const;
 
 private:
     glm::vec3 center_ ;

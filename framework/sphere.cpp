@@ -47,4 +47,11 @@ std::ostream& Sphere :: print(std::ostream& os ) const
         return os;
     }
 
+bool Sphere :: intersect (Ray const& ray, float& distance) const
+    {
+        return glm::intersectRaySphere(ray.origin,ray.direction, center_, radius_*radius_, distance); 
+        //Berrechnung/Ueberpruefung des Schnitts von Strahl und Kugel
+        // ray starting - normalisierte Richtung des Strahl - Kugel Mittelpunkt - quadrierter radius - Schnitt Abstand
+    }
+
     

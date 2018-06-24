@@ -2,6 +2,7 @@
     "files.associations": {
         "array": "cpp",
         "limits": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "string": "cpp"
     }
 }
