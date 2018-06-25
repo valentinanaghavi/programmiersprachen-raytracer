@@ -14,7 +14,7 @@ Sphere :: Sphere():
     center_{0.0 , 0.0 , 0.0}, 
     radius_{0.0f}
     {
-        std::cout << "default C'tor class Sphere - Child" << std::endl ;
+        std::cout << "default Constructor class Sphere - Child" << std::endl ;
     };
 
 Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Color const& color ): //radius ohne &const
@@ -22,13 +22,13 @@ Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string con
     center_{center},
     radius_{radius}
     {
-        std::cout << "C'tor class Sphere - Child" << std::endl ;
+        std::cout << "Construcotr class Sphere - Child" << std::endl ;
     };
 
 
 Sphere :: ~Sphere()
     {
-        std::cout << "D'tor class Sphere - Child" << std::endl ;
+        std::cout << "Destructor class Sphere - Child" << std::endl ;
     };
 
 

@@ -132,11 +132,28 @@ TEST_CASE( "intersect_ray_sphere" , "[intersect]")
     distance );
 
     REQUIRE ( distance == Approx (4.0f ));
+
+    
+    glm::vec3 center3{0.0,0.0,2.0};
+    float radius3{0.5f};
+    Color color{1.0f,1.0f,1.0f};
+    Sphere sphere3{center3,radius3,"Kugel 2",color};
+    float distance_2 = 0.0f;
+
+    REQUIRE(!sphere3.intersect(Ray{},distance_2));
+
+    glm::vec3 center4{0.0,0.0, -2.0};
+    float radius4{2.0f};
+    Sphere sphere4{center4,radius4,"Kugel 3",color};
+    float distance_3 = 0.0f ;
+
+    REQUIRE(sphere4.intersect(Ray{},distance_3));
 }
 
 //aufgabe 5.8
 TEST_CASE("virtual_destructor" , "[virtual]")
   {
+    std::cout << "<<<<<<<<<Aufgabe 5.8 >>>>>>>>>>>\n";
     Color red{255,0,0};
     glm::vec3 position{0.0f, 0.0f, 0.0f };
 

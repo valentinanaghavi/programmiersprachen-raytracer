@@ -14,12 +14,12 @@ Shape :: Shape(std::string const& name , Color const& color):
     name_{name},
     color_{color}
     {
-        std::cout << "C'tor class Shape" << std::endl ;
+        std::cout << "Constructor class Shape" << std::endl ;
     };
 
 Shape :: ~Shape()
     {
-        std::cout << "D'tor class Shape" << std::endl ;
+        std::cout << "Destructor class Shape" << std::endl ;
     };
 
 std::string Shape :: getName() const
