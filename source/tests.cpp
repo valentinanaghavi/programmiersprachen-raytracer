@@ -167,8 +167,31 @@ TEST_CASE("virtual_destructor" , "[virtual]")
     delete s2 ;
   }
 
+TEST_CASE("aufgabe 5.7" , "[dynamischStatisch]")
+{
+  std::cout << "<<<<<<<<<Aufgabe 5.7 >>>>>>>>>>>\n";
+  Color red {255 , 0 , 0};
+  glm::vec3 position {0.0f , 0.0f , 0.0f };
+  std::shared_ptr<Sphere>s1= std::make_shared<Sphere>( position , 1.2f , " sphere0 ", red );
+  std::shared_ptr<Shape>s2 = std::make_shared<Sphere>( position , 1.2f , " sphere1 ", red  );
+  s1->print(std::cout);
+  s2->print(std::cout);
+}
 
+TEST_CASE("aufgabe 6.3" , "[intersectRayBox]")
+{
+  glm::vec3 min3 {-2.0 ,0.0 , 0.0} ;
+  glm::vec3 min4 {2.0 ,0.0 , 0.0} ;
+  glm::vec3 max {50.0 , 10.0 , 3.0};
+  Color color {0.0f , 1.0f , 0.0f};
+  float t = 50.0f;
+  Box box3{min3,max,"Box" , color};
+  Box box4{min4,max,"Box" , color};
 
+  REQUIRE(box3.intersect(Ray{},t));
+  REQUIRE(!box4.intersect(Ray{},t));
+
+}
 
 
 int main(int argc, char *argv[])
