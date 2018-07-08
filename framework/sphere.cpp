@@ -17,18 +17,18 @@ Sphere :: Sphere():
         std::cout << "default Constructor class Sphere - Child" << std::endl ;
     };
 
-Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Color const& color ): //radius ohne &const
-    Shape{name , color},
+Sphere :: Sphere(glm::vec3 const& center , float const& radius , std::string const& name, Material const& material): //radius ohne &const
+    Shape{name , material},
     center_{center},
     radius_{radius}
     {
-        std::cout << "Construcotr class Sphere - Child" << std::endl ;
+       // std::cout << "Construcotr class Sphere - Child" << std::endl ;
     };
 
 
 Sphere :: ~Sphere()
     {
-        std::cout << "Destructor class Sphere - Child" << std::endl ;
+       // std::cout << "Destructor class Sphere - Child" << std::endl ;
     };
 
 
@@ -54,7 +54,7 @@ float Sphere :: volume() const
 
 std::ostream& Sphere :: print(std::ostream& os ) const
     {
-        Shape::print(os);   //prints name and color
+        Shape::print(os);   //prints name and material
         os << "area: " << area() << " \n volume: " << volume() << " \n center: (" << center_.x << ", " << center_.y << ", " << center_.z << ") \n radius: "  << radius_ << " \n";
         
         return os;

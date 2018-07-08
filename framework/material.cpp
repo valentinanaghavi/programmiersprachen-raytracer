@@ -30,5 +30,9 @@ std::ostream& Material :: print(std::ostream& os ) const
 
 }
 
+std::ostream& operator << (std::ostream& os, Material const& material)
+{
+    return material.print(os);
+}
 
 

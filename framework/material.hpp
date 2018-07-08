@@ -9,7 +9,7 @@ struct Material
     //constructors
     Material();
     Material(std::string const& name, Color const& ka, Color const& kd, Color const& ks, float m);
-
+    
     //function
     std::ostream& print(std::ostream& os ) const ;
 
@@ -22,6 +22,6 @@ struct Material
 
 };
 //free function
-std::ostream& operator << (std::ostream& os, Material const& mat);
+std::ostream& operator << (std::ostream& os, Material const& material);
 
 #endif //define MATERIAL_HPP

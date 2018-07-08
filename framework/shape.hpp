@@ -5,13 +5,14 @@
 #include <iostream>
 #include <string>
 #include "Ray.hpp"
+#include "material.hpp"
 
 class Shape //abstrakte Basisklasse
 {
 
 public:
     Shape();
-    Shape(std::string const& name , Color const& color);
+    Shape(std::string const& name , Material const& material);
     virtual ~Shape();
     //~Shape();
 
@@ -19,7 +20,7 @@ public:
     virtual float volume() const = 0; // Methodeninterface wird vererbt, keine Implementierung 
 
     std::string getName() const;
-    Color getColor() const;
+    Material getMaterial() const;
 
     virtual std::ostream& print(std::ostream& os ) const ;
 
@@ -28,12 +29,13 @@ public:
 
 private:
     std::string name_ ;
-    Color color_ ;
+    Material material_ ;
 
 
 };
 
     std::ostream& operator<<(std::ostream& os , Shape const& s) ;
+    std::ostream& operator<<(std::ostream& os , std::shared_ptr<Shape> const& s) ;
 
 #endif // define SHAPE_HPP 
 

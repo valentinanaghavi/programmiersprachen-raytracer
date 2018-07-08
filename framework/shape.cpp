@@ -1,39 +1,36 @@
 #include "shape.hpp"
-#include <string>
-#include <iostream>
-
 
 Shape :: Shape():
     name_{"NoName"},
-    color_{0.0f , 0.0f , 0.0f}
+    material_{Material{}}
     {
-        std::cout << "default C'tor class Shape" << std::endl ;
+       // std::cout << "default C'tor class Shape" << std::endl ;
     };
 
-Shape :: Shape(std::string const& name , Color const& color):
+Shape :: Shape(std::string const& name , Material const& material):
     name_{name},
-    color_{color}
+    material_{material}
     {
-        std::cout << "Constructor class Shape" << std::endl ;
+       // std::cout << "Constructor class Shape" << std::endl ;
     };
 
 Shape :: ~Shape()
     {
-        std::cout << "Destructor class Shape" << std::endl ;
+      //  std::cout << "Destructor class Shape" << std::endl ;
     };
 
 std::string Shape :: getName() const
     {
         return name_ ;
     }
-Color Shape :: getColor() const
+Material Shape :: getMaterial() const
     {
-        return color_ ;
+        return material_ ;
     }
 
 std::ostream& Shape::print(std::ostream& os) const
 	{
-		os << "new shape: \n" << "name: " << name_ << " \n Color: " << color_ << "\n";
+		os << "new shape: \n" << "name: " << name_ << " \n Material: " << material_ << "\n";
 		return os;
 	}
 
@@ -41,3 +38,9 @@ std::ostream& operator<<(std::ostream& os, Shape const& s)
 	{
 		return s.print(os);
     }
+
+std::ostream& operator<<(std::ostream& os, std::shared_ptr<Shape> const& s)
+    {
+        return s->print(os);
+    }
+
