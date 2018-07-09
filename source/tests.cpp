@@ -196,6 +196,15 @@ TEST_CASE("aufgabe 6.3" , "[intersectRayBox]")
 
 } 
 
+TEST_CASE("aufgabe6.5", "[sceneSDF]")
+{
+  Scene scene;
+  read_sdf("/home/valentina/programmiersprachen-raytracer/source/example.sdf" , &scene);
+  search_map("red", scene.material_map);
+  search_set("blue", scene.material_set);
+  search_vector("green", scene.material_vector);
+
+}
 
 int main(int argc, char *argv[])
 {
