@@ -10,10 +10,12 @@
 #include<glm/gtx/intersect.hpp>
 
 #include "../framework/sphere.hpp"
+#include "../framework/material.hpp"
+#include "../framework/scene.hpp"
 #include "../framework/box.hpp"
 #include "../framework/color.hpp"
 #include "../framework/Ray.hpp"
-
+/*
 //aufgabe 5.2 + 5.3
 TEST_CASE("general_methods_Box_Sphere" , "[ShapeMethods]")
   {
@@ -177,21 +179,22 @@ TEST_CASE("aufgabe 5.7" , "[dynamischStatisch]")
   s1->print(std::cout);
   s2->print(std::cout);
 }
+*/
 
 TEST_CASE("aufgabe 6.3" , "[intersectRayBox]")
 {
   glm::vec3 min3 {-2.0 ,0.0 , 0.0} ;
   glm::vec3 min4 {2.0 ,0.0 , 0.0} ;
   glm::vec3 max {50.0 , 10.0 , 3.0};
-  Color color {0.0f , 1.0f , 0.0f};
+  Material material{};
   float t = 50.0f;
-  Box box3{min3,max,"Box" , color};
-  Box box4{min4,max,"Box" , color};
+  Box box3{min3,max,"Box" , material};
+  Box box4{min4,max,"Box" , material};
 
   REQUIRE(box3.intersect(Ray{},t));
   REQUIRE(!box4.intersect(Ray{},t));
 
-}
+} 
 
 
 int main(int argc, char *argv[])

@@ -2,10 +2,12 @@
 #define SHAPE_HPP
 
 #include "color.hpp" 
-#include <iostream>
-#include <string>
 #include "Ray.hpp"
 #include "material.hpp"
+
+#include <iostream>
+#include <string>
+#include <memory> //manage dynamic shared_ptr
 
 class Shape //abstrakte Basisklasse
 {
