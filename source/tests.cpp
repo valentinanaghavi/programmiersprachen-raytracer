@@ -179,7 +179,7 @@ TEST_CASE("aufgabe 5.7" , "[dynamischStatisch]")
   s1->print(std::cout);
   s2->print(std::cout);
 }
-*/
+
 
 TEST_CASE("aufgabe 6.3" , "[intersectRayBox]")
 {
@@ -193,17 +193,26 @@ TEST_CASE("aufgabe 6.3" , "[intersectRayBox]")
 
   REQUIRE(box3.intersect(Ray{},t));
   REQUIRE(!box4.intersect(Ray{},t));
-
-} 
+  Material m{};
+  m.print(std::cout);
+  std::cout<<m<<"\n";
+}  
+*/
 
 TEST_CASE("aufgabe6.5", "[sceneSDF]")
 {
-  Scene scene;
-  read_sdf("/home/valentina/programmiersprachen-raytracer/source/example.sdf" , &scene);
-  search_map("red", scene.material_map);
-  search_set("blue", scene.material_set);
-  search_vector("green", scene.material_vector);
+  std::shared_ptr<Scene>scene = std::make_shared<Scene>();
+  read_sdf("/home/valentina/programmiersprachen-raytracer/source/example.txt" , *scene);
+  //search_map("red", scene);
+ // search_set("blue", scene);
+ // search_vector("green", scene);
 
+  std::cout << "material green: " ;
+  if(find_material("green", *scene)==0) 
+  std::cout << "green"; 
+  std::cout << "\n";
+
+  REQUIRE(find_material("pink",*scene) == nullptr);
 }
 
 int main(int argc, char *argv[])

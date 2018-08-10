@@ -22,9 +22,10 @@ struct Scene
 };
 
 //free function
-void read_sdf(std::string const& file_path , Scene* scene) //Scene* oder Scene&
+void read_sdf(std::string const& file_path , Scene& scene) 
 {
     std::ifstream myfile (file_path);
+    std::string line;
 
     if(!myfile.is_open())
     {
@@ -32,20 +33,26 @@ void read_sdf(std::string const& file_path , Scene* scene) //Scene* oder Scene&
     }
     else
     {   
-        std::string line;
+        std::cout << "Able to read file" ;
 
-
+    }
         while( std::getline( myfile , line ))
         {
-            Material material;
+           
             std::stringstream buffer(line);
+            Material material;
             std::string a;
             std::string b;
+            std::string c;
+            std::string d;
 
-            buffer >> a >> b ;
+            buffer >> a >> b >> c >> d;
             
-            if("define" == a && "material" == b)
+            if(a=="define")
+
             {
+                if(b=="material")
+                {
                 buffer 
                 >> a
                 >> b
@@ -63,14 +70,15 @@ void read_sdf(std::string const& file_path , Scene* scene) //Scene* oder Scene&
 
                 std::shared_ptr<Material> material_path = std::make_shared<Material>(material);
 
-                scene -> material_map.insert(std::make_pair(material_path->name_ , material_path));
-                scene -> material_set.insert(material_path);
-                scene -> material_vector.push_back(material_path);
-            }
+                //scene.material_map.insert(std::make_pair(material_path->name_ , material_path));
+                //scene.material_set.insert(material_path);
+                //scene.material_vector.push_back(material_path);
+                scene.material_map.insert(std::pair<std::string,std::shared_ptr<Material>> (material_path->name_,material_path));
+            }}
 
         }
         myfile.close();
-    }
+    
 
 }
 
@@ -81,7 +89,7 @@ bool operator<(std::shared_ptr<Material> const& lhs , std::shared_ptr<Material> 
     return lhs->name_ < rhs->name_ ;
 }
 
-std::shared_ptr<Material> search_vector(std::string const& search_name , std::vector<std::shared_ptr<Material>> const& material_vector_)
+/*std::shared_ptr<Material> search_vector(std::string const& search_name , std::vector<std::shared_ptr<Material>> const& material_vector_)
 {
     auto it = std::find_if(material_vector_.begin() , material_vector_.end(),[search_name](std::shared_ptr<Material> const& material)
     {
@@ -100,7 +108,7 @@ std::shared_ptr<Material> search_vector(std::string const& search_name , std::ve
     }
 };
 
-std::shared_ptr<Material> search_map(std::string const& search_name , std::map<std::string, std::shared_ptr<Material>> const& material_map_)
+std::shared_ptr<Material> search_map(std::string const& search_name , std::map <std::string, std::shared_ptr <Material> > const& material_map_)
 {
     auto it = material_map_.find(search_name);
     if(it == material_map_.end())
@@ -131,5 +139,18 @@ std::shared_ptr<Material> search_set(std::string const& search_name , std::set<s
         std::cout << "Der Name ist an Stelle:" << *(*it) << "\n";
         return *it;
     }
-};
+};*/
+
+std::shared_ptr<Material> find_material(std::string matName, Scene& sc)
+{
+    if(sc.material_map.find(matName) != sc.material_map.end())
+    {
+        return sc.material_map.find(matName)->second;
+        
+    }
+    else 
+    {
+        return nullptr;
+    }
+}
 #endif //SCENE_HPP
